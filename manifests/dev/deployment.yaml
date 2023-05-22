@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: saemea-app
+  name: saapj-rt-app
   namespace: dev
   labels:
-    app: saemea-app
+    app: saapj-rt-app
     env: dev
 spec:
   selector:
     matchLabels:
-      app: saemea-app
+      app: saapj-rt-app
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -19,18 +19,18 @@ spec:
   template:
     metadata:
       labels:
-        app: saemea-app
+        app: saapj-rt-app
     spec:
       containers:
-      - name: saemea-app
+      - name: saapj-rt-app
         image: {{ IMAGE_CONTAINER }}
         imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 3000
       imagePullSecrets:
-      - name: github-aquasaemea-dockerhub
-#  docker.io/aquasaemea/saemea-app:11
+      - name: github-saapj-rt-app-dockerhub
+#  docker.io/aquasaapj/saapj-rt-app:1
 #        livenessProbe:
 #          httpGet:
 #            path: /index.html
